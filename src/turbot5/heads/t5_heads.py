@@ -35,10 +35,11 @@ from transformers.utils import logging
 
 from ..model.modeling import T5Stack, T5Model, T5ClassificationHead, T5PreTrainedModel, __HEAD_MASK_WARNING_MSG
 from ..model.config import T5Config
+from transformers.generation_utils import GenerationMixin
 
 logger = logging.get_logger(__name__)
 
-class T5ForConditionalGeneration(T5PreTrainedModel):
+class T5ForConditionalGeneration(T5PreTrainedModel,GenerationMixin):
     _keys_to_ignore_on_load_unexpected = [
         "decoder.block.0.layer.1.EncDecAttention.relative_attention_bias.weight",
     ]
